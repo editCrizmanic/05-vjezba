@@ -1,35 +1,25 @@
-import { Component } from 'react';
-import Header from "./components/Header"
-import Main from "./components/Main"
-import './App.css';
+import { useState } from "react";
+import "./App.css"
+import Header from "./components/Header";
+import Main from "./components/Main";
 
-class App extends Component {
-  constructor (props) {
-    super (props)
-    this.state = {
-      page: "Home"
+const App = () => {
+  const [page, setPage] = useState("Home")
+
+  const pageHandler = () => {
+    if (page === "Home") {
+      setPage ("About")
+    } else {
+      setPage("Home")
     }
   }
-  pageHandler = () => {
-    if (this.state.page === "Home") {
-      this.setState ({
-        page: "About"
-      })
-    }
-    else {
-      this.setState({
-        page: "Home"
-      })
-    }
-  }
-  render() {
-    return (
-      <div className="App">
-        <Header pageHandler={this.pageHandler} page={this.state.page}/>
-        <Main page={this.state.page}/>
-      </div>
-    )
-  } 
+
+  return (
+    <div className="App">
+      <Header pageHandler={pageHandler} page={page}/>
+      <Main page={page}/>
+    </div>
+  )
 }
 
-export default App;
+export default App

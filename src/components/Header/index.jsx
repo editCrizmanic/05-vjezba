@@ -1,11 +1,9 @@
-import { Component } from "react";
-
-export default class Header extends Component {
-    render () {
-        return (
-            <header>
-                <button onClick={this.props.pageHandler}>Go to {this.props.page === "Home" ? "About" : "Home"}</button>
-            </header>
-        )
-    }
+const Header = (props) => {
+    return (
+        <header>    
+            <button onClick={props.pageHandler}>Go to {props.page === "Home" ? "About" : "Home"}</button>
+        </header>
+    )
 }
+
+export default Header

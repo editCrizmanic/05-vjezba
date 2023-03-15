@@ -1,23 +1,32 @@
 import { Component } from 'react';
+import Header from "./components/Header"
+import Main from "./components/Main"
 import './App.css';
 
 class App extends Component {
-  state = {
-    title: "React App title"
+  constructor (props) {
+    super (props)
+    this.state = {
+      page: "Home"
+    }
   }
-
+  pageHandler = () => {
+    if (this.state.page === "Home") {
+      this.setState ({
+        page: "About"
+      })
+    }
+    else {
+      this.setState({
+        page: "Home"
+      })
+    }
+  }
   render() {
     return (
       <div className="App">
-        <h1>{this.state.title}</h1>
-        <button onClick={() => this.state.title === "React App title"
-        ?
-        this.setState({title: "Promjena"})
-        :
-        this.setState({title: "React App title"})
-        }>
-          Promjeni
-        </button>
+        <Header pageHandler={this.pageHandler} page={this.state.page}/>
+        <Main page={this.state.page}/>
       </div>
     )
   } 
